@@ -4,15 +4,7 @@ import java.time.LocalDateTime;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.Lob;
-import jakarta.persistence.OneToOne;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Data;
 
 @Entity
@@ -25,7 +17,7 @@ public class CommentModel {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column(columnDefinition = "LONGTEXT")
+    @Column(columnDefinition = "TEXT")
     @Lob
     @JsonProperty(value = "content")
     private String content;
@@ -38,7 +30,7 @@ public class CommentModel {
     @JsonProperty(value = "edited")
     private Boolean edited;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "user_id")
     private UserModel user;
 

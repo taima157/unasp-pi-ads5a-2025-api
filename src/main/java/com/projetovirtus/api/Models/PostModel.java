@@ -29,7 +29,7 @@ public class PostModel {
     @JsonProperty("title")
     private String title;
 
-    @Column(columnDefinition = "LONGTEXT")
+    @Column(columnDefinition = "TEXT")
     @Lob
     @JsonProperty("description")
     private String description;
